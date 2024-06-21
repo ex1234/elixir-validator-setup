@@ -2,6 +2,12 @@
 
 # Установка Docker и Python без подтверждений
 export DEBIAN_FRONTEND=noninteractive
+
+# Предустановка параметров конфигурации для debconf
+echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+echo 'debconf debconf/priority select critical' | sudo debconf-set-selections
+
+# Установка Docker и Python
 sudo apt-get update
 sudo apt-get install -y docker.io python3 python3-pip
 
